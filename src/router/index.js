@@ -1,8 +1,8 @@
 // 导入方法：创建router实例对象，创建history模式的路由（即URL中不带 #）
 import { createRouter, createWebHistory } from 'vue-router'
 // 导入页面组件
-import Login from '@/views/Login/login.vue'
-import Layout from '@/views/Layout/index.vue'
+import Login from '@/pages/Login/login.vue'
+import Layout from '@/pages/Layout/index.vue'
 
 
 const router = createRouter({

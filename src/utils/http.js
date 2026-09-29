@@ -1,5 +1,5 @@
 // axios基础的封装
-import axios from "axios";
+import axios from 'axios';
 
 // 创建axios实例
 const httpInstance = axios.create ({

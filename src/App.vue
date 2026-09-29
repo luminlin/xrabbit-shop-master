@@ -3,7 +3,8 @@
 </script>
 
 <template>
-  <el-button type="primary">Primary</el-button>
+  <!-- 一级路由出口组件，匹配到的组件会渲染在这个位置 -->
+  <RouterView />
 </template>
 
 <style scoped>

@@ -1,4 +1,5 @@
 // axios基础的封装
+// 用来在浏览器或 Node.js 中发送网络请求（比如请求后端 API 获取数据）的工具
 import axios from 'axios';
 
 // 创建axios实例

@@ -1,5 +1,20 @@
 <script setup>
+import { getCategoryAPI } from '@/apis/layout'
+import { onMounted, ref } from 'vue';
 
+// 定义响应式数组，获取接口数据
+const categoryList = ref([])
+// 声明异步函数，等接口返回后再处理数据
+const getCategory = async () => {
+    const res = await getCategoryAPI()
+    console.log(res)
+    categoryList.value = res.result
+}
+
+// 在组件"挂载完成"这个时机，自动调用数据请求函数
+onMounted(() => {
+    getCategory()
+})
 </script>
 
 <template>
@@ -9,12 +24,10 @@
         <RouterLink to="/">小兔鲜</RouterLink>
       </h1>
       <ul class="app-header-nav">
-        <li class="home">
-          <RouterLink to="/">首页</RouterLink>
+        <!-- 遍历响应式数组，为每个分类生成一个 <li>，给每个节点绑定唯一 key -->
+        <li class="home" v-for="value in categoryList" :key="value.id">
+          <RouterLink to="/">{{ value.name }}</RouterLink>
         </li>
-        <li> <RouterLink to="/">居家</RouterLink> </li>
-        <li> <RouterLink to="/">美食</RouterLink> </li>
-        <li> <RouterLink to="/">服饰</RouterLink> </li>
       </ul>
       <div class="search">
         <i class="iconfont icon-search"></i>

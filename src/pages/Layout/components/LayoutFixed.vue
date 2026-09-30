@@ -1,47 +1,25 @@
 <script setup>
 // 导入 VueUse 库里的"滚动监听"这个工具
 import { useScroll } from '@vueuse/core'
+import { useCategoryStore } from '@/stores/category.js'
+
 // 监听整个浏览器(windows)窗口的滚动，y是垂直滚动距离 
 const { y } = useScroll(window)
+
+const categoryStore= useCategoryStore()
 </script>
 
 <template>
   <!-- 吸顶导航交互实现 -->
+  <!-- 滚动距离大于78则显示吸顶导航 -->
   <div class="app-header-sticky" :class="{ show: y > 78 }">
-    {{ y }}
     <div class="container">
       <RouterLink class="logo" to="/" />
       <!-- 导航区域 -->
       <ul class="app-header-nav ">
-        <li class="home">
-          <RouterLink to="/">首页</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">居家</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">美食</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">服饰</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">母婴</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">个护</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">严选</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">数码</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">运动</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">杂项</RouterLink>
+        <!-- 遍历响应式数组，为每个分类生成一个 <li>，给每个节点绑定唯一 key -->
+        <li class="home" v-for="value in categoryStore.categoryList" :key="value.id">
+          <RouterLink to="/">{{ value.name }}</RouterLink>
         </li>
       </ul>
 

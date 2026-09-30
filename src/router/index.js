@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 // 导入页面组件
 import Login from '@/pages/Login/login.vue'
 import Layout from '@/pages/Layout/index.vue'
+import Home from '@/pages/Home/Home.vue'
 
 
 const router = createRouter({
@@ -11,7 +12,14 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component: Layout
+      component: Layout,
+      // 子路由
+      children: [
+          {
+              path: '',
+              component: Home
+          }
+      ]
     },
     {
       path: '/login',

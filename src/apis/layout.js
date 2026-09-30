@@ -1,6 +1,6 @@
-// 定义获取首页分类头部数据的 API 函数
 import httpInstance from "@/utils/http";
 
+// 定义获取首页分类头部数据的 API 函数
 export function getCategoryAPI(){
     return httpInstance({
         // 请求地址
